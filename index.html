@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FOOD Delivery</title>
+    <link rel="icon" type="image/x-icon" href="/images/headLogo.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <a href="#hero" class="logo"
+        ><img src="images/logo.png" alt="Food Logo"
+      /></a>
+      <div class="nav-container">
+        <nav class="navbar">
+          <ul class="nav-menu">
+            <li><a href="#category">Category</a></li>
+            <li><a href="#cuisine">Cuisine</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+              <a href="#" onclick="alert('Cart coming soon!')">Cart</a>
+            </li>
+          </ul>
+        </nav>
+        <!-- Hamburger Icon -->
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section with Search Box -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <h2>Delicious Meals, Delivered Fast</h2>
+        <div class="tagline-container">
+          <p class="tagline active">Spice up your day with bold flavors.</p>
+          <p class="tagline">Indulge in cheesy perfection.</p>
+          <p class="tagline">Freshly delivered to your door.</p>
+        </div>
+        <div class="search-box">
+          <input
+            type="text"
+            placeholder="Search for restaurants or dishes..."
+          />
+          <button class="search-btn">Search</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Section -->
+    <section class="category" id="category">
+      <h2>Browse by Category</h2>
+      <div class="category-container">
+        <div class="category-card">Vegetarian</div>
+        <div class="category-card">Non-Vegetarian</div>
+        <div class="category-card">Desserts</div>
+        <div class="category-card">Beverages</div>
+      </div>
+    </section>
+
+    <!-- Cuisine Showcase Section -->
+    <section class="cuisine-showcase" id="cuisine">
+      <h2>Explore Our Cuisines</h2>
+      <div class="cuisine-container" id="cuisine-container">
+        <!-- 3x3 Cuisine cards added via JS -->
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-container">
+        <div class="contact-locations">
+          <h3>Our Locations</h3>
+          <p>Karachi</p>
+          <p>Lahore</p>
+          <p>Peshawar</p>
+          <p>Islamabad</p>
+        </div>
+        <div class="contact-info">
+          <h3>Contact Details</h3>
+          <p>Email: designxmails@gmail.com</p>
+          <p>Phone: +92 3191519691</p>
+          <p>WhatsApp: +92 300 123 4567</p>
+          <p>Address: Karachi, Pakistan (HQ)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp Icon -->
+    <div class="whatsapp-icon">
+      <a href="https://wa.me/923191519691" target="_blank"
+        ><i class="fa-brands fa-whatsapp"></i
+      ></a>
+    </div>
+
+    <!-- Up Arrow -->
+    <div class="up-arrow" id="up-arrow" onclick="scrollToTop()">↑</div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 FOOD Delivery. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

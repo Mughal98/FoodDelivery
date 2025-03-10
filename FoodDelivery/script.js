@@ -64,6 +64,16 @@ function displayCuisines() {
   });
 }
 
+// Add scroll event listener to change header color
+window.addEventListener("scroll", () => {
+  const header = document.querySelector(".header");
+  if (window.scrollY > 50) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+
 // Scroll to top function
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });

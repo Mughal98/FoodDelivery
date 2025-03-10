@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-
 body {
   font-family: "Poppins", sans-serif;
   color: #333;
@@ -141,27 +140,6 @@ html {
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* .tagline-container {
-  min-height: 2.5rem;
-  margin-bottom: 2rem;
-  position: relative;
-}
-
-.tagline {
-  font-size: 1.4rem;
-  font-weight: 400;
-  opacity: 0;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: opacity 0.5s ease-in-out;
-}
-
-.tagline.active {
-  opacity: 1;
-  position: relative;
-} */
-
 .search-box {
   display: flex;
   justify-content: center;
@@ -198,8 +176,9 @@ html {
   background: #e64a19;
 }
 
-/* Category Section */
+/* CSS - Adjusted for better centering and looping */
 .category {
+  position: relative;
   padding: 5rem 2rem;
   background-color: #f8f8f8;
   text-align: center;
@@ -213,28 +192,80 @@ html {
   margin-bottom: 2.5rem;
 }
 
-.category-container {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+.slider-container {
+  width: 100%;
   max-width: 1200px;
+  position: relative;
   margin: 0 auto;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
 }
 
 .category-card {
-  background: #fff;
-  padding: 1rem 2rem;
+  flex: 0 0 300px; /* Fixed width for consistent centering */
+  height: 180px;
+  padding: 1.5rem 2rem;
+  padding-top: 130px;
   border-radius: 10px;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #333;
+  color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 10px; /* Consistent spacing */
+  background-size: cover; /* Ensure the image covers the card */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent tiling */
+  background-image: linear-gradient(
+      rgba(253, 177, 96, 0.384),
+      rgba(151, 0, 0, 0.63)
+    ),
+    var(--bg-image);
 }
 
 .category-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ff5733;
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  background: #e64a19;
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
 }
 
 /* Cuisine Showcase */
@@ -287,11 +318,14 @@ html {
 }
 
 /* Contact */
-#contact{
-  background: linear-gradient(rgba(255, 121, 26, 0.837), rgba(255, 59, 5, 0.821)),
-  url("https://images.unsplash.com/photo-1715559502300-4bc5b5ce6818?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-background-size: cover;
-background-position: center;
+#contact {
+  background: linear-gradient(
+      rgba(255, 121, 26, 0.837),
+      rgba(255, 59, 5, 0.821)
+    ),
+    url("https://images.unsplash.com/photo-1715559502300-4bc5b5ce6818?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
 }
 
 .contact {
@@ -376,6 +410,7 @@ background-position: center;
   justify-content: center;
   font-size: 1.5rem;
   cursor: pointer;
+  opacity: 0;
   transition: opacity 0.3s ease, background 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 1200; /* Ensure it stays above the navbar */
@@ -405,9 +440,13 @@ footer {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .hero-content h1{
+  .hero-content h1 {
     font-size: 3rem;
     font-weight: 700;
+  }
+
+  .category-card {
+    flex: 0 0 calc(33.33% - 20px); /* 3 cards per row */
   }
 }
 
@@ -470,7 +509,7 @@ footer {
     display: none;
   }
 
-  .hero-content h1{
+  .hero-content h1 {
     font-size: 2.6rem;
   }
 
@@ -501,7 +540,6 @@ footer {
 
   .cuisine-container {
     grid-template-columns: 1fr;
-
   }
 
   .contact-container {
@@ -522,10 +560,14 @@ footer {
   .up-arrow {
     bottom: 80px;
   }
+
+  .category-card {
+    flex: 0 0 calc(50% - 20px); /* 2 cards per row */
+  }
 }
 
 @media (max-width: 480px) {
-  .hero-content h1{
+  .hero-content h1 {
     font-size: 1.5rem;
   }
 
@@ -541,5 +583,16 @@ footer {
 
   .navbar ul.nav-menu li a {
     font-size: 1.3rem; /* Slightly smaller for very small screens */
+  }
+
+  .category-card {
+    flex: 0 0 calc(100% - 20px); /* 1 card per row */
+  }
+
+  .prev-btn,
+  .next-btn {
+    width: 30px; /* Smaller buttons for mobile */
+    height: 30px;
+    font-size: 1rem;
   }
 }

@@ -217,6 +217,7 @@ html {
   font-size: 1.2rem;
   font-weight: 600;
   color: #ffffff;
+  text-shadow: 0 2px 4px rgba(68, 0, 0, 0.774);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin: 0 10px; /* Consistent spacing */
@@ -224,8 +225,8 @@ html {
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent tiling */
   background-image: linear-gradient(
-      rgba(253, 177, 96, 0.384),
-      rgba(151, 0, 0, 0.63)
+      rgba(255, 179, 97, 0.26),
+      rgba(189, 38, 0, 0.63)
     ),
     var(--bg-image);
 }
@@ -240,7 +241,7 @@ html {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #ff5733;
+  background: #ff5c1c;
   color: white;
   border: none;
   padding: 12px;
@@ -253,11 +254,12 @@ html {
   align-items: center;
   justify-content: center;
   transition: background 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .prev-btn:hover,
 .next-btn:hover {
-  background: #e64a19;
+  background: #df3f0f;
 }
 
 .prev-btn {
@@ -594,5 +596,21 @@ footer {
     width: 30px; /* Smaller buttons for mobile */
     height: 30px;
     font-size: 1rem;
+  }
+
+  .prev-btn {
+    left: 1px;
+  }
+
+  .next-btn {
+    right: 1px;
+  }
+
+  .whatsapp-icon {
+    bottom: 115px;
+  }
+
+  .up-arrow {
+    bottom: 65px;
   }
 }

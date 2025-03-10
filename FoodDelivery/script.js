@@ -139,6 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let touchStartX = 0;
   let touchCurrentX = 0;
   let autoSlideInterval;
+  const cardsPerSet = cards.length; // Original number of cards
 
   // Array of background images tied to specific categories
   const cardImages = [
@@ -152,16 +153,20 @@ document.addEventListener("DOMContentLoaded", () => {
     'url("https://d4t7t8y8xqo0t.cloudfront.net/app/resized/600X350/group%2F381%2Fbigstock-Fresh-Blueberry-And-Strawberry-38483941.jpg")', // Beverages
   ];
 
-  // Assign background images to original cards before cloning using custom property
+  // Assign background images to original cards
   cards.forEach((card, i) => {
     card.style.setProperty("--bg-image", cardImages[i]);
   });
 
-  // Clone cards for seamless infinite effect
-  const firstClone = cards[0].cloneNode(true); // Clone Vegetarian
-  const lastClone = cards[cards.length - 1].cloneNode(true); // Clone Beverages
-  slider.appendChild(firstClone);
-  slider.insertBefore(lastClone, cards[0]);
+  // Create multiple sets of clones for seamless looping (3 sets total: before, original, after)
+  const originalCards = Array.from(cards);
+  for (let i = 0; i < 2; i++) {
+    originalCards.forEach((card, index) => {
+      const clone = card.cloneNode(true);
+      clone.style.setProperty("--bg-image", cardImages[index]);
+      slider.appendChild(clone);
+    });
+  }
 
   // Update cards after cloning
   cards = document.querySelectorAll(".category-card");
@@ -173,13 +178,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return (containerWidth - cardWidth) / 2;
   };
 
-  // Initial position
-  currentIndex = 1;
+  // Initial position (start in the middle set)
+  currentIndex = cardsPerSet; // Start at the beginning of the original set
   slider.style.transform = `translateX(${
     -cardWidth * currentIndex + centerOffset()
   }px)`;
 
-  // Slide function (no image reassignment)
+  // Slide function
   function slideTo(index, instant = false) {
     if (isAnimating && !instant) return;
 
@@ -200,11 +205,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Handle transition end for seamless looping
   function handleTransitionEnd() {
     isAnimating = false;
-    if (currentIndex >= totalSlides - 1) {
-      currentIndex = 1;
+    // If we reach the last set, jump back to the original set instantly
+    if (currentIndex >= totalSlides - cardsPerSet) {
+      currentIndex = cardsPerSet;
       slideTo(currentIndex, true);
-    } else if (currentIndex <= 0) {
-      currentIndex = totalSlides - 2;
+    }
+    // If we reach the first set, jump to the second-to-last set instantly
+    else if (currentIndex < cardsPerSet) {
+      currentIndex = totalSlides - cardsPerSet * 2;
       slideTo(currentIndex, true);
     }
   }

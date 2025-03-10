@@ -225,6 +225,26 @@ html {
   padding: 20px 0;
 }
 
+.slider-container::before,
+.slider-container::after {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 200px;
+  content: "";
+  z-index: 2;
+}
+
+.slider-container::before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), #f8f8f8);
+}
+
+.slider-container::after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #f8f8f8);
+}
+
 .slider {
   display: flex;
   align-items: center;
@@ -262,6 +282,7 @@ html {
 
 .prev-btn,
 .next-btn {
+  z-index: 3;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -476,6 +497,16 @@ footer {
   }
 }
 
+.slider-container::before,
+.slider-container::after {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 170px;
+  content: "";
+  z-index: 2;
+}
+
 @media (max-width: 768px) {
   .header {
     padding: 1rem;
@@ -596,6 +627,16 @@ footer {
   }
 }
 
+.slider-container::before,
+.slider-container::after {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 130px;
+  content: "";
+  z-index: 2;
+}
+
 @media (max-width: 480px) {
   .hero-content h1 {
     font-size: 1.5rem;
@@ -641,4 +682,14 @@ footer {
   .up-arrow {
     bottom: 65px;
   }
+}
+
+.slider-container::before,
+.slider-container::after {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 80px;
+  content: "";
+  z-index: 2;
 }
